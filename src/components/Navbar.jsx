@@ -56,7 +56,7 @@ function Navbar({ className }) {
                   <NavLink to="/applied-jobs">Applied Jobs</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/add-jobs">Add a Job</NavLink>
+                  <NavLink to="/add-jobs">Add A Job</NavLink>
                 </li>
                 <li>
                   <NavLink to="/my-jobs">My Jobs</NavLink>
@@ -107,7 +107,7 @@ function Navbar({ className }) {
                   className="cursor-pointer hover:bg-[#aea1ea] hover:text-white px-3 py-2 rounded-md "
                   to="/add-jobs"
                 >
-                  Add a Job
+                  Add A Job
                 </NavLink>
               </li>
               <li>

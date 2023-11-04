@@ -4,6 +4,7 @@ import { BiSolidShow, BiSolidHide } from "react-icons/Bi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import JobContext from "../context/JobContext";
+import { Helmet } from "react-helmet";
 
 function hasCapitalLetter(str) {
   for (let i = 0; i < str.length; i++) {
@@ -124,6 +125,9 @@ function Registration() {
   return (
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 min-h-screen">
+        <Helmet>
+          <title>JobZen | Registration</title>
+        </Helmet>
         <div className="md:col-span-1 lg:col-span-2 flex items-center justify-center">
           <img className="w-[90%] h-[80%]" src="./registration.svg" alt="" />
         </div>

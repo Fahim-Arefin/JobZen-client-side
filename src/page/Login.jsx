@@ -5,6 +5,7 @@ import { BiSolidHide, BiSolidShow } from "react-icons/Bi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import JobContext from "../context/JobContext";
+import { Helmet } from "react-helmet";
 
 function Login() {
   const [showPassword, setShowPassWord] = useState(false);
@@ -100,6 +101,9 @@ function Login() {
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 min-h-screen">
+      <Helmet>
+        <title>JobZen | Login</title>
+      </Helmet>
       <div className="md:col-span-1 lg:col-span-2 h-[400px] lg:h-screen">
         <img className="w-full h-full" src="./login.svg" alt="" />
       </div>
