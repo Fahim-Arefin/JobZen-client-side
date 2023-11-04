@@ -193,14 +193,14 @@ function Registration() {
                 )}
               </div>
               <div>
-                <button className="px-4 py-2 rounded-md w-full outline-none text-white bg-[#FFBF5A] active:bg-[#FFBF5A] hover:bg-[#daa44f] transition-all duration-150">
+                <button className="px-4 py-2 rounded-md w-full outline-none text-white bg-[#aea1ea] active:bg-[#aea1ea] hover:bg-[#9a8ade] transition-all duration-150">
                   Register
                 </button>
               </div>
             </form>
             <div className="flex space-x-3 text-sm ">
               <span className="text-gray-400">Already have an account?</span>
-              <Link to="/login" className="text-[#e1a94f]">
+              <Link to="/login" className="text-[#8d79e6]">
                 Go to login
               </Link>
             </div>

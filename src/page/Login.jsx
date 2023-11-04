@@ -148,14 +148,14 @@ function Login() {
               )}
             </div>
             <div>
-              <button className="px-4 py-2 rounded-md w-full outline-none text-white bg-[#FFBF5A] active:bg-[#FFBF5A] hover:bg-[#d7a34e]">
+              <button className="px-4 py-2 rounded-md w-full outline-none text-white bg-[#aea1ea] active:bg-[#aea1ea] hover:bg-[#9a8ade]">
                 Sign in
               </button>
             </div>
           </form>
           <div className="flex space-x-3 text-sm ">
             <span className="text-gray-400">New on our platform?</span>
-            <Link to="/registration" className="text-[#e1a94f]">
+            <Link to="/registration" className="text-[#8d79e6]">
               create an account
             </Link>
           </div>

@@ -8,6 +8,10 @@ import AppLayout from "./layout/AppLayout";
 import Login from "./page/Login";
 import Registration from "./page/Registration";
 import { JobProvider } from "./context/JobContext";
+import AllJobs from "./page/AllJobs";
+import AppliedJobs from "./page/AppliedJobs";
+import AddJobs from "./page/AddJobs";
+import MyJobs from "./page/MyJobs";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +20,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/jobs",
+        element: <AllJobs />,
+      },
+      {
+        path: "/applied-jobs",
+        element: <AppliedJobs />,
+      },
+      {
+        path: "/add-jobs",
+        element: <AddJobs />,
+      },
+      {
+        path: "/my-jobs",
+        element: <MyJobs />,
       },
     ],
   },
