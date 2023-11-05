@@ -125,9 +125,18 @@ function Navbar({ className }) {
       <div className="navbar-end">
         {user ? (
           <div className="dropdown dropdown-end z-50">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar relative group"
+            >
               <div className="w-10 rounded-full">
                 <img src={`${user.photoURL}`} />
+              </div>
+              <div
+                className="invisible group-hover:visible absolute right-12 top-4 w-32 h-[50px]
+              opacity-0 transition-all duration-300 group-hover:opacity-100 mr-2 text-center "
+              >
+                <p className="">{user?.displayName}</p>
               </div>
             </label>
             <ul

@@ -1,12 +1,13 @@
 import { Helmet } from "react-helmet";
+import Banner from "../components/Banner";
 
 function Home() {
   return (
-    <div>
+    <div className=" grow">
       <Helmet>
         <title>JobZen | Home</title>
       </Helmet>
-      <div>Home</div>
+      <Banner />
     </div>
   );
 }

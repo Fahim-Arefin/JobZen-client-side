@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col justify-between">
       <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 }

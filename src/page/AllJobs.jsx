@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 function AllJobs() {
   return (
-    <div>
+    <div className=" grow">
       <Helmet>
         <title>JobZen | All Jobs</title>
       </Helmet>
