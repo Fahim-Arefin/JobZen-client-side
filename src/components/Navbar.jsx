@@ -1,6 +1,8 @@
 import { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import JobContext from "../context/JobContext";
+import Button from "./Button";
+import { FiLogIn } from "react-icons/fi";
 
 function Navbar({ className }) {
   const { user, logOut } = useContext(JobContext);
@@ -74,8 +76,8 @@ function Navbar({ className }) {
           </span> */}
         </div>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="option-menu flex space-x-4 text-[#0B0B0B] text-lg">
+      <div className="navbar-center hidden lg:flex ">
+        <ul className="option-menu flex space-x-4 text-zinc-800 text-lg">
           <li>
             <NavLink
               className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
@@ -92,34 +94,34 @@ function Navbar({ className }) {
               All Jobs
             </NavLink>
           </li>
-          {user && (
-            <>
-              <li>
-                <NavLink
-                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-                  to="/applied-jobs"
-                >
-                  Applied Jobs
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-                  to="/add-jobs"
-                >
-                  Add A Job
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-                  to="/my-jobs"
-                >
-                  My Jobs
-                </NavLink>
-              </li>
-            </>
-          )}
+          {/* {user && (
+            <> */}
+          <li>
+            <NavLink
+              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+              to="/applied-jobs"
+            >
+              Applied Jobs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+              to="/add-jobs"
+            >
+              Add A Job
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+              to="/my-jobs"
+            >
+              My Jobs
+            </NavLink>
+          </li>
+          {/* </>
+          )} */}
         </ul>
       </div>
       <div className="navbar-end">
@@ -171,11 +173,20 @@ function Navbar({ className }) {
           //   <div>log out</div>
           // </div>
           <div>
-            <Link to="/login">
-              <button className="bg-[#aea1ea] text-white px-3 py-2 rounded-md hover:bg-[#9b8ed7] active:bg-[#aea1ea]">
+            {/* <Link to="/login">
+              <button className="border border-[#aea1ea] text-zinc-800 px-3 py-2 rounded-md hover:bg-[#9b8ed7] active:bg-[#aea1ea]">
                 Log in
               </button>
-            </Link>
+            </Link> */}
+            <Button
+              to="/login"
+              primary
+              outline
+              className="px-4 py-2.5 flex space-x-2"
+            >
+              <FiLogIn className="mt-[3px]" />
+              <span>Log In</span>
+            </Button>
           </div>
         )}
       </div>

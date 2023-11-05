@@ -4,14 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .input {
+    @apply rounded-lg border border-gray-300  px-5 py-2  outline-none placeholder:tracking-wide
+    focus:outline-none  focus:ring focus:ring-gray-300 focus:ring-offset-2;
+  }
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
-
-/* .option-menu li a.active {
-  background-color: #aea1ea;
-  color: white;
-} */
 
 .option-menu li a.active {
   background-color: #aea1ea;

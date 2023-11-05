@@ -22,7 +22,7 @@ function PageNotFound() {
             className="bg-[#aea1ea] w-fit mx-auto px-4 py-2 rounded-md hover:bg-[#9a89e5] active:bg-[#aea1ea] cursor-pointer
            transition-all duration-150 text-white"
           >
-            <Link onClick={() => navigate(-1)}>&larr; go back</Link>
+            <Link onClick={() => navigate("/")}>&larr; go home</Link>
           </div>
         </div>
       </div>
