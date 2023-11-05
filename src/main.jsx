@@ -12,10 +12,12 @@ import AllJobs from "./page/AllJobs";
 import AppliedJobs from "./page/AppliedJobs";
 import AddJobs from "./page/AddJobs";
 import MyJobs from "./page/MyJobs";
+import PageNotFound from "./page/PageNotFound";
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: "/",

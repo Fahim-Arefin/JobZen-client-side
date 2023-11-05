@@ -78,7 +78,7 @@ function Navbar({ className }) {
         <ul className="option-menu flex space-x-4 text-[#0B0B0B] text-lg">
           <li>
             <NavLink
-              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white px-3 py-2 rounded-md "
+              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
               to="/"
             >
               Home
@@ -86,7 +86,7 @@ function Navbar({ className }) {
           </li>
           <li>
             <NavLink
-              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white px-3 py-2 rounded-md "
+              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
               to="/jobs"
             >
               All Jobs
@@ -96,7 +96,7 @@ function Navbar({ className }) {
             <>
               <li>
                 <NavLink
-                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white px-3 py-2 rounded-md "
+                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
                   to="/applied-jobs"
                 >
                   Applied Jobs
@@ -104,7 +104,7 @@ function Navbar({ className }) {
               </li>
               <li>
                 <NavLink
-                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white px-3 py-2 rounded-md "
+                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
                   to="/add-jobs"
                 >
                   Add A Job
@@ -112,7 +112,7 @@ function Navbar({ className }) {
               </li>
               <li>
                 <NavLink
-                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white px-3 py-2 rounded-md "
+                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
                   to="/my-jobs"
                 >
                   My Jobs
@@ -144,13 +144,17 @@ function Navbar({ className }) {
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li className="hover:bg-[#aea1ea] rounded-lg">
-                <a className="hover:text-white">{user?.displayName}</a>
+                <a className="hover:text-white transition-all duration-150">
+                  {user?.displayName}
+                </a>
               </li>
               <li
                 className="hover:bg-[#aea1ea] rounded-lg"
                 onClick={handleLogOut}
               >
-                <a className="hover:text-white">Logout</a>
+                <a className="hover:text-white transition-all duration-150">
+                  Logout
+                </a>
               </li>
             </ul>
           </div>
