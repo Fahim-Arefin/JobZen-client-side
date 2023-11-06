@@ -1,8 +1,4 @@
-const JobTabs = ({ tabData, activeTab, setActiveTab, className }) => {
-  const handleTabClick = (tabId) => {
-    setActiveTab(tabId);
-  };
-
+const JobTabs = ({ tabData, activeTab, className, handleTabClick }) => {
   return (
     <div className={`w-full mx-auto max-w-screen-lg ${className}`}>
       <div className="flex flex-wrap">
