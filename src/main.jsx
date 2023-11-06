@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -8,11 +8,14 @@ import AppLayout from "./layout/AppLayout";
 import Login from "./page/Login";
 import Registration from "./page/Registration";
 import { JobProvider } from "./context/JobContext";
-import AllJobs from "./page/AllJobs";
+import AllJobs, { loader as categoriesLoader } from "./page/AllJobs";
 import AppliedJobs from "./page/AppliedJobs";
 import AddJobs from "./page/AddJobs";
 import MyJobs from "./page/MyJobs";
 import PageNotFound from "./page/PageNotFound";
+import JobDetails from "./page/JobDetails";
+import PrivateRoute from "./components/PrivateRoute";
+import Error from "./components/Error";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,16 @@ const router = createBrowserRouter([
       {
         path: "/jobs",
         element: <AllJobs />,
+        errorElement: <Error />,
+        loader: categoriesLoader,
+      },
+      {
+        path: "/jobs-details/:id",
+        element: (
+          <PrivateRoute msg={"You have to log in first to view details"}>
+            <JobDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/applied-jobs",
@@ -52,9 +65,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <JobProvider>
-      <RouterProvider router={router} />
-    </JobProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <JobProvider>
+    <RouterProvider router={router} />
+  </JobProvider>
+  // </React.StrictMode>
 );

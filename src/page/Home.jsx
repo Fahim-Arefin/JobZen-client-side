@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import JobContext from "../context/JobContext";
 import JobList from "./JobList";
-import Loader from "../components/Loader";
+import LoaderSpinner from "../components/LoaderSpinner";
 import { useEffect } from "react";
 
 function Home() {
@@ -69,7 +69,7 @@ function Home() {
         handleTabClick={handleTabClick}
         className="mb-12"
       />
-      {isLoading ? <Loader /> : <JobList data={filteredData} />}
+      {isLoading ? <LoaderSpinner /> : <JobList data={filteredData} />}
       {isError && "Error"}
     </div>
   );

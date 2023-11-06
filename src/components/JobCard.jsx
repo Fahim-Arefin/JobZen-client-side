@@ -4,8 +4,16 @@ import { TbListDetails } from "react-icons/tb";
 import { RxCounterClockwiseClock } from "react-icons/rx";
 import { convertToCustomDateFormat, formatRemainingTime } from "../util/util";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function JobCard({ data }) {
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    console.log(id);
+    navigate(`/jobs-details/${id}`);
+  };
+
   return (
     <div
       className="col-span-1 border border-gray-200 rounded-xl 
@@ -63,6 +71,7 @@ function JobCard({ data }) {
           primary
           outline
           className="px-3 py-2 mt-6 w-full text-[#202124] tracking-wider flex items-center justify-center space-x-2"
+          onClick={() => handleClick(data._id)}
         >
           <TbListDetails className="text-xl" />
           <span className="mt-0.5">Job Details</span>

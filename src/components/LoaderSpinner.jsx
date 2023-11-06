@@ -1,4 +1,4 @@
-function Loader() {
+function LoaderSpinner() {
   return (
     <div className="w-full h-[500px] flex items-center justify-center bg-slate-300/30 backdrop-blur-sm">
       <span className="loading loading-ring loading-lg"></span>;
@@ -6,4 +6,4 @@ function Loader() {
   );
 }
 
-export default Loader;
+export default LoaderSpinner;

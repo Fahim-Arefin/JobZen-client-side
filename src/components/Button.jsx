@@ -9,10 +9,10 @@ function Button({ children, primary, secondary, outline, ...rest }) {
   transition-all duration-150 hover:bg-[#aea1ea] focus:outline-none focus:ring focus:ring-[#aea1ea] 
   focus:ring-offset-2 active:bg-[#9d8cc7] disabled:cursor-not-allowed disabled:bg-purple-200 text-zinc-700`;
 
-  let secondaryStyle = `rounded-lg border border-stone-300 bg-stone-200 font-semibold uppercase tracking-wide
-  transition-all duration-150 hover:bg-stone-300 focus:outline-none focus:ring focus:ring-stone-300 
-  focus:ring-offset-2 active:bg-stone-400 disabled:cursor-not-allowed disabled:bg-stone-200 `;
-
+  let secondaryStyle = `rounded-lg border-none bg-[#b2ebf9] font-semibold uppercase tracking-wide
+  transition-all duration-150 hover:bg-[#92d8e1] focus:outline-none focus:ring focus:ring-[#92d8e1] 
+  focus:ring-offset-2 active:bg-[#72d8e1] disabled:cursor-not-allowed disabled:bg-purple-200 text-zinc-800 `;
+  // b2ebf9
   //if button use as a link
   if (rest?.to) {
     return (
