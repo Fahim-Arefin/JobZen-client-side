@@ -14,6 +14,24 @@ function JobDetails() {
       <div className="w-full h-[500px] lg:h-[300px] bg-gradient-to-r from-[#f7f8fd] to-[#e5ecfa]">
         <JobCardPoster data={data} />
       </div>
+      <div className="grid grid-cols-1 space-y-6 xl:space-y-0 xl:grid-cols-2 my-24 container mx-auto text-[#202124]">
+        <div className="rounded-lg col-span-1 h-[300px] md:h-[500px]">
+          <img
+            className="w-full h-full rounded-lg"
+            src={data.bannerUrl}
+            alt=""
+          />
+        </div>
+        <div className="p-4 md:px-12 md:py-4 space-y-2 col-span-1">
+          <h1 className="text-3xl font-bold text-center">{data.jobTitle}</h1>
+          <h2 className="text-center text-red-500 font-semibold text-sm">
+            {data.salaryRange}
+          </h2>
+          <p className="text-justify text-[#767676] text-sm md:text-lg">
+            {data.jobDescription}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
