@@ -11,7 +11,7 @@ function JobCard({ data }) {
 
   const handleClick = (id) => {
     console.log(id);
-    navigate(`/jobs-details/${id}`);
+    navigate(`/job/${id}`);
   };
 
   return (
@@ -70,7 +70,7 @@ function JobCard({ data }) {
         <Button
           primary
           outline
-          className="px-3 py-2 mt-6 w-full text-[#202124] tracking-wider flex items-center justify-center space-x-2"
+          className="px-3 py-2 mt-6 w-full text-[#202124] tracking-wider flex items-center justify-center space-x-2 uppercase"
           onClick={() => handleClick(data._id)}
         >
           <TbListDetails className="text-xl" />

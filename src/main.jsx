@@ -8,7 +8,7 @@ import AppLayout from "./layout/AppLayout";
 import Login from "./page/Login";
 import Registration from "./page/Registration";
 import { JobProvider } from "./context/JobContext";
-import AllJobs, { loader as categoriesLoader } from "./page/AllJobs";
+import AllJobs, { loader as loadAllJobs } from "./page/AllJobs";
 import AppliedJobs from "./page/AppliedJobs";
 import AddJobs from "./page/AddJobs";
 import MyJobs from "./page/MyJobs";
@@ -16,6 +16,7 @@ import PageNotFound from "./page/PageNotFound";
 import JobDetails from "./page/JobDetails";
 import PrivateRoute from "./components/PrivateRoute";
 import Error from "./components/Error";
+import { loader as loadJobById } from "./page/JobDetails";
 
 const router = createBrowserRouter([
   {
@@ -30,15 +31,17 @@ const router = createBrowserRouter([
         path: "/jobs",
         element: <AllJobs />,
         errorElement: <Error />,
-        loader: categoriesLoader,
+        loader: loadAllJobs,
       },
       {
-        path: "/jobs-details/:id",
+        path: "/job/:id",
         element: (
           <PrivateRoute msg={"You have to log in first to view details"}>
             <JobDetails />
           </PrivateRoute>
         ),
+        errorElement: <Error />,
+        loader: loadJobById,
       },
       {
         path: "/applied-jobs",

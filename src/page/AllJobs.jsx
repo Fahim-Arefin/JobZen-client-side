@@ -12,7 +12,7 @@ function AllJobs() {
 
   const handleClick = (id) => {
     console.log(id);
-    navigate(`/jobs-details/${id}`);
+    navigate(`/job/${id}`);
   };
 
   const filteredJobs = jobData.filter((job) =>
@@ -81,7 +81,7 @@ function AllJobs() {
                       <Button
                         onClick={() => handleClick(job._id)}
                         secondary
-                        className="px-4 py-2"
+                        className="px-4 py-2 uppercase"
                       >
                         Details
                       </Button>
