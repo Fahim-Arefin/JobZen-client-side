@@ -8,11 +8,13 @@ import axios from "axios";
 import JobContext from "../context/JobContext";
 import Spinner from "../components/Spinner";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function AddJobs() {
   const [isLoading, setIslaoding] = useState(false);
   // const [isError, setIsError] = useState(false);
   const { user, successToast, errorToast, baseURL } = useContext(JobContext);
+  const navigate = useNavigate();
 
   const [jobData, setJobData] = useState({
     bannerUrl: "",
@@ -70,6 +72,9 @@ function AddJobs() {
         jobApplicants: 0,
       });
       successToast("Job Posted SuccessFully !!", 2000);
+      setTimeout(() => {
+        navigate("/my-jobs");
+      }, 3000);
     } catch (error) {
       console.log(error);
       setIslaoding(false);

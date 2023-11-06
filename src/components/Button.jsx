@@ -12,6 +12,7 @@ function Button({ children, primary, secondary, outline, ...rest }) {
   let secondaryStyle = `rounded-lg border-none bg-[#b2ebf9] font-semibold  tracking-wide
   transition-all duration-150 hover:bg-[#92d8e1] focus:outline-none focus:ring focus:ring-[#92d8e1] 
   focus:ring-offset-2 active:bg-[#72d8e1] disabled:cursor-not-allowed disabled:bg-purple-200 text-zinc-800 `;
+
   // b2ebf9
   //if button use as a link
   if (rest?.to) {

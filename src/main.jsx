@@ -53,7 +53,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-jobs",
-        element: <MyJobs />,
+        element: (
+          <PrivateRoute msg={"You have to log in first to see my jobs"}>
+            <MyJobs />
+          </PrivateRoute>
+        ),
       },
     ],
   },
