@@ -1,10 +1,26 @@
 import { Helmet } from "react-helmet";
 import Banner from "../components/Banner";
 import JobTabs from "../components/JobTabs";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import JobContext from "../context/JobContext";
+import JobList from "./JobList";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("all-jobs");
+
+  const [data, setData] = useState([]);
+  const { baseURL } = useContext(JobContext);
+
+  useEffect(() => {
+    const fetData = async () => {
+      const res = await axios.get(`${baseURL}/jobs`);
+      const data = res.data;
+      // console.log(data);
+      setData(data);
+    };
+    fetData();
+  }, [baseURL]);
 
   const tabData = [
     { id: "all-jobs", label: "All Jobs" },
@@ -14,7 +30,7 @@ function Home() {
     { id: "part-time", label: "Part Time" },
   ];
   return (
-    <div className=" grow">
+    <div className="grow">
       <Helmet>
         <title>JobZen | Home</title>
       </Helmet>
@@ -23,8 +39,9 @@ function Home() {
         tabData={tabData}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        className="mb-24"
+        className="mb-12"
       />
+      <JobList data={data} />
     </div>
   );
 }

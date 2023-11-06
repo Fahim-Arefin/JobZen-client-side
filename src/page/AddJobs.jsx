@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
@@ -12,9 +12,7 @@ import { ToastContainer } from "react-toastify";
 function AddJobs() {
   const [isLoading, setIslaoding] = useState(false);
   // const [isError, setIsError] = useState(false);
-  const { user, successToast, errorToast } = useContext(JobContext);
-
-  const baseURL = "http://localhost:5000";
+  const { user, successToast, errorToast, baseURL } = useContext(JobContext);
 
   const [jobData, setJobData] = useState({
     bannerUrl: "",
@@ -32,6 +30,7 @@ function AddJobs() {
       ...jobData,
       ["userName"]: user?.displayName,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.displayName]);
 
   const handleInputChange = (e) => {
