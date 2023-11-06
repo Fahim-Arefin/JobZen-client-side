@@ -17,6 +17,8 @@ import JobDetails from "./page/JobDetails";
 import PrivateRoute from "./components/PrivateRoute";
 import Error from "./components/Error";
 import { loader as loadJobById } from "./page/JobDetails";
+import { loader as loadOneJob } from "./page/UpdateJob";
+import UpdateJob from "./page/UpdateJob";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +51,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-jobs",
-        element: <AddJobs />,
+        element: (
+          <PrivateRoute msg={"You have to log in first to Add jobs"}>
+            <AddJobs />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateJob />,
+        errorElement: <Error />,
+        loader: loadOneJob,
       },
       {
         path: "/my-jobs",

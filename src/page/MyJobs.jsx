@@ -22,7 +22,7 @@ function MyJobs() {
   };
 
   const handleUpdateClick = (id) => {
-    console.log(id);
+    navigate(`/update/${id}`);
   };
 
   const handleDeleteClick = async (id) => {
