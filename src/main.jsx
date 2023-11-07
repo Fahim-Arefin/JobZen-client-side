@@ -19,6 +19,7 @@ import Error from "./components/Error";
 import { loader as loadJobById } from "./page/JobDetails";
 import { loader as loadOneJob } from "./page/UpdateJob";
 import UpdateJob from "./page/UpdateJob";
+import Blog from "./page/Blog";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/blogs",
+        element: <Blog />,
       },
       {
         path: "/jobs",
