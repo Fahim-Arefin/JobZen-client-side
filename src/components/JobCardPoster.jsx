@@ -5,10 +5,15 @@ import { convertToCustomDateFormat, formatRemainingTime } from "../util/util";
 import Button from "./Button";
 import { useContext, useRef, useState } from "react";
 import JobContext from "../context/JobContext";
+import axios from "axios";
+import Spinner from "./Spinner";
+import { ToastContainer } from "react-toastify";
 
 function JobCardPoster({ data }) {
-  const { user } = useContext(JobContext);
+  const { user, baseURL, successToast, errorToast } = useContext(JobContext);
   const [resume, setResume] = useState("");
+  const [isLoading, setIsloading] = useState(false);
+
   const modalRef = useRef(null);
 
   const handleApplyButton = (id) => {
@@ -16,20 +21,38 @@ function JobCardPoster({ data }) {
     document.getElementById("my_modal_3").showModal();
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
+    modalRef.current.close();
     const applicationData = {
       applicantName: user.displayName,
       applicantEmail: user.email,
       resumeLink: resume,
-      JobId: data._id,
+      jobId: data._id,
+      createdAt: new Date(),
     };
-    console.log(applicationData);
-    modalRef.current.close();
+    // console.log(applicationData);
+    try {
+      setIsloading(true);
+      const res = await axios.post(`${baseURL}/applications?id=${user.uid}`, {
+        ...applicationData,
+      });
+      console.log(res.data);
+      if (res.data.message) {
+        return errorToast(res.data.message, 2000);
+      }
+      successToast("Your job application is posted !!", 2000);
+    } catch (error) {
+      console.log(error);
+      errorToast("Your job application could not be posted !!", 2000);
+    } finally {
+      setIsloading(false);
+    }
   };
 
   return (
     <>
+      {isLoading && <Spinner />}
       <div className="flex flex-col lg:flex-row justify-center lg:justify-around items-center h-full">
         <div
           className="col-span-1
@@ -132,7 +155,9 @@ function JobCardPoster({ data }) {
                     Name:
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="cursor-not-allowed shadow appearance-none border rounded w-full py-2 px-3
+                     text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                     disabled:bg-gray-200"
                     type="text"
                     id="name"
                     name="name"
@@ -150,7 +175,9 @@ function JobCardPoster({ data }) {
                     Email:
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="cursor-not-allowed shadow appearance-none border rounded w-full py-2 px-3
+                     text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                     disabled:bg-gray-200"
                     type="email"
                     id="email"
                     name="email"
@@ -168,7 +195,7 @@ function JobCardPoster({ data }) {
                     Resume Link:
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     type="text"
                     id="resume"
                     name="resume"
@@ -188,6 +215,22 @@ function JobCardPoster({ data }) {
           </div>
         </dialog>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        style={{
+          display: "inline-block",
+          width: "auto",
+        }}
+      />
     </>
   );
 }
