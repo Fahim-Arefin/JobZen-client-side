@@ -37,7 +37,8 @@ function AppliedJobs() {
         setIsLoading(true);
         setIsError(false);
         const res = await axios.get(
-          `${baseURL}/applications?email=${user.email}`
+          `${baseURL}/applications?email=${user.email}`,
+          { withCredentials: true }
         );
         setAppliedData(res.data);
         setFilteredData(res.data);

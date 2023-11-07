@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -28,8 +30,31 @@ function JobProvider({ children }) {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("from onAuthStateChanged", currentUser);
+
+      const id = currentUser?.uid || user?.uid;
+      const email = currentUser?.email || user?.email;
+      const loggedInUser = { id, email };
+
       setUser(currentUser);
       setLoading(false);
+
+      // JWT Token
+      // If current user exist we issue a token
+      if (currentUser) {
+        axios
+          .post(`${baseURL}/jwt`, loggedInUser, { withCredentials: true })
+          .then((res) => {
+            console.log("Token Response: ", res.data);
+          });
+      } else {
+        axios
+          .post(`${baseURL}/logout`, loggedInUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
 
     return () => {

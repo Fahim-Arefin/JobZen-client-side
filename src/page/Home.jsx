@@ -21,7 +21,9 @@ function Home() {
       try {
         setIslaoding(true);
         setIsError(false);
-        const res = await axios.get(`${baseURL}/jobs`);
+        const res = await axios.get(`${baseURL}/jobs`, {
+          withCredentials: true,
+        });
         setData(res.data);
         setFilteredData(res.data);
       } catch (error) {
@@ -55,7 +57,7 @@ function Home() {
     }
   };
 
-  console.log(filteredData);
+  // console.log(filteredData);
 
   return (
     <div className="grow">

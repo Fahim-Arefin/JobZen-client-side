@@ -53,7 +53,9 @@ function MyJobs() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const res = await axios.get(`${baseURL}/jobs?id=${user.uid}`);
+        const res = await axios.get(`${baseURL}/jobs?id=${user.uid}`, {
+          withCredentials: true,
+        });
         setMyData(res.data);
       } catch (error) {
         setIsError(true);
