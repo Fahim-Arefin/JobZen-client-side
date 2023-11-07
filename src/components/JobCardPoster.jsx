@@ -8,11 +8,13 @@ import JobContext from "../context/JobContext";
 import axios from "axios";
 import Spinner from "./Spinner";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function JobCardPoster({ data }) {
   const { user, baseURL, successToast, errorToast } = useContext(JobContext);
   const [resume, setResume] = useState("");
   const [isLoading, setIsloading] = useState(false);
+  const navigate = useNavigate();
 
   const modalRef = useRef(null);
 
@@ -42,6 +44,7 @@ function JobCardPoster({ data }) {
         return errorToast(res.data.message, 2000);
       }
       successToast("Your job application is posted !!", 2000);
+      navigate("/applied-jobs");
     } catch (error) {
       console.log(error);
       errorToast("Your job application could not be posted !!", 2000);

@@ -47,7 +47,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/applied-jobs",
-        element: <AppliedJobs />,
+        element: (
+          <PrivateRoute
+            msg={"You have to log in first to see your applied jobs"}
+          >
+            <AppliedJobs />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-jobs",
