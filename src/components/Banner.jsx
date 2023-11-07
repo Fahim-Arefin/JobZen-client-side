@@ -22,15 +22,21 @@ function Banner() {
           - Unlock Your Career Potential with JobZen: Where Opportunities Find
           You!
         </span>
-        <div className="w-[50%] relative">
+        <div className="w-[80%] relative flex">
           <input
-            className="w-full h-12 rounded-md outline-none px-8 py-4"
+            className="w-[80%] h-12 rounded-md outline-none px-8 py-4"
             type="text"
             name=""
             id=""
             placeholder="search jobs"
           />
-          <FiSearch className="absolute top-3 text-xl right-6" />
+          <FiSearch className="absolute top-3 text-xl right-36" />
+          <button
+            className="px-4 py-2 h-12 text-white border border-white rounded-md ml-2
+          hover:bg-white hover:text-black transition-all duration-150"
+          >
+            Search
+          </button>
         </div>
       </div>
       <div className="absolute inset-0 bg-gray-700 opacity-10 z-10"></div>

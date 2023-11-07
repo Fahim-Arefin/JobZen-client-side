@@ -8,6 +8,7 @@ import JobList from "./JobList";
 import LoaderSpinner from "../components/LoaderSpinner";
 import { useEffect } from "react";
 import Poster from "../components/Poster";
+import SwiperCard from "../components/SwiperCard";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("all-jobs");
@@ -16,6 +17,7 @@ function Home() {
   const { baseURL } = useContext(JobContext);
   const [isLoading, setIslaoding] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [imgData, setImgData] = useState([]);
 
   useEffect(() => {
     const fetData = async () => {
@@ -35,6 +37,15 @@ function Home() {
     };
     fetData();
   }, [baseURL]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/img.json");
+      const data = await res.json();
+      setImgData(data);
+    };
+    fetchData();
+  }, []);
 
   const tabData = [
     { id: "all-jobs", label: "All Jobs" },
@@ -75,6 +86,10 @@ function Home() {
       />
       {isLoading ? <LoaderSpinner /> : <JobList data={filteredData} />}
       {isError && "Error"}
+      <div className="uppercase text-center pt-24 text-[#6f68fa] font-semibold">
+        Meet Our Team
+      </div>
+      <SwiperCard imgData={imgData} className="my-24" />
     </div>
   );
 }

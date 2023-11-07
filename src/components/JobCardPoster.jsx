@@ -44,7 +44,9 @@ function JobCardPoster({ data }) {
         return errorToast(res.data.message, 2000);
       }
       successToast("Your job application is posted !!", 2000);
-      navigate("/applied-jobs");
+      setTimeout(() => {
+        navigate("/applied-jobs");
+      }, 3000);
     } catch (error) {
       console.log(error);
       errorToast("Your job application could not be posted !!", 2000);

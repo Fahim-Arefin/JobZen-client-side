@@ -1,6 +1,6 @@
 function Poster() {
   return (
-    <div className=" grid grid-cols-1 xl:grid-cols-2 my-24 gap-6 xl:h-[600px]">
+    <div className=" grid grid-cols-1 xl:grid-cols-2 my-24 gap-6 xl:h-[600px] xl:pl-32">
       <div className="col-span-1 w-full md:w-[450px] h-[500px] mx-auto relative">
         <img src="poster.jpg" alt="" className="w-full h-full" />
         <div
