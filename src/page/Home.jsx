@@ -7,6 +7,7 @@ import JobContext from "../context/JobContext";
 import JobList from "./JobList";
 import LoaderSpinner from "../components/LoaderSpinner";
 import { useEffect } from "react";
+import Poster from "../components/Poster";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("all-jobs");
@@ -65,6 +66,7 @@ function Home() {
         <title>JobZen | Home</title>
       </Helmet>
       <Banner />
+      <Poster />
       <JobTabs
         tabData={tabData}
         activeTab={activeTab}

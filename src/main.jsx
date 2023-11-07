@@ -29,6 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        errorElement: <Error />,
       },
       {
         path: "/blogs",
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
             <AppliedJobs />
           </PrivateRoute>
         ),
+        errorElement: <Error />,
       },
       {
         path: "/add-jobs",
@@ -67,6 +69,7 @@ const router = createBrowserRouter([
             <AddJobs />
           </PrivateRoute>
         ),
+        errorElement: <Error />,
       },
       {
         path: "/update/:id",
@@ -81,6 +84,7 @@ const router = createBrowserRouter([
             <MyJobs />
           </PrivateRoute>
         ),
+        errorElement: <Error />,
       },
     ],
   },
