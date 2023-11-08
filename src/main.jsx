@@ -20,6 +20,7 @@ import { loader as loadJobById } from "./page/JobDetails";
 import { loader as loadOneJob } from "./page/UpdateJob";
 import UpdateJob from "./page/UpdateJob";
 import Blog from "./page/Blog";
+import ContactUs from "./page/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,11 @@ const router = createBrowserRouter([
             <MyJobs />
           </PrivateRoute>
         ),
+        errorElement: <Error />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
         errorElement: <Error />,
       },
     ],

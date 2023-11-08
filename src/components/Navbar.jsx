@@ -68,6 +68,9 @@ function Navbar({ className }) {
             <li>
               <NavLink to="/blogs">Blogs</NavLink>
             </li>
+            <li>
+              <NavLink to="/contact">Contact Us</NavLink>
+            </li>
           </ul>
         </div>
         <div className="text-xl tracking-widest font-bold flex items-center space-x-4 px-6 py-4 rounded-lg">
@@ -131,6 +134,14 @@ function Navbar({ className }) {
               to="/blogs"
             >
               Blogs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+              to="/contact"
+            >
+              Contact Us
             </NavLink>
           </li>
         </ul>

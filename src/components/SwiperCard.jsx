@@ -35,7 +35,7 @@ export default function SwiperCard({ imgData, className }) {
         // slidesPerView={3}
         // spaceBetween={20}
         autoplay={{
-          delay: 4500,
+          delay: 3500,
           disableOnInteraction: false,
         }}
         navigation={true}
