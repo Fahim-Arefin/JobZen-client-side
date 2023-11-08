@@ -17,7 +17,9 @@ function PrivateRoute({ children, msg }) {
   if (user) {
     return children;
   } else if (!user) {
-    errorToast(msg, 2000);
+    setTimeout(() => {
+      errorToast(msg, 2000);
+    }, 1000);
     return (
       <>
         <ToastContainer

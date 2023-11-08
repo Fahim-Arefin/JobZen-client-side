@@ -39,11 +39,14 @@ function JobCardPoster({ data }) {
       const res = await axios.post(`${baseURL}/applications?id=${user.uid}`, {
         ...applicationData,
       });
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.message) {
         return errorToast(res.data.message, 2000);
       }
-      successToast("Your job application is posted !!", 2000);
+      successToast(
+        "Job Applied Successfull !! Also mail send to your email",
+        2000
+      );
       setTimeout(() => {
         navigate("/applied-jobs");
       }, 3000);
