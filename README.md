@@ -4,20 +4,20 @@ The Job Seeker Website is a visually captivating full-stack solution that stream
 
 ## Table of Contents
 
-1. [Visual Appeal](#visual-appeal)
-2. [User Authentication](#user-authentication)
-3. [Job Listings](#job-listings)
-4. [Educational Content](#educational-content)
-5. [Job Management](#job-management)
-6. [Search System](#search-system)
-7. [Custom 404 Page](#custom-404-page)
-8. [Responsive Design](#responsive-design)
-9. [JWT Implementation](#jwt-implementation)
-10. [Dynamic Page Title](#dynamic-page-title)
-11. [Code Quality](#code-quality)
-12. [Contributing](#contributing)
-13. [License](#license)
-14. [Live Website](#live-website)
+1. [Visual Appeal](#visual-appeal) 🔍
+2. [User Authentication](#user-authentication) 🔐
+3. [Job Listings](#job-listings) 📋
+4. [Educational Content](#educational-content) 📚
+5. [Job Management](#job-management) 🏢
+6. [Search System](#search-system) 🔍
+7. [Custom 404 Page](#custom-404-page) 🚫
+8. [Responsive Design](#responsive-design) 📱💻
+9. [JWT Implementation](#jwt-implementation) 🔒
+10. [Dynamic Page Title](#dynamic-page-title) 🔄
+11. [Code Quality](#code-quality) 🛠️
+12. [Contributing](#contributing) 🤝
+13. [License](#license) 📜
+14. [Live Website](#live-website) 🌐
 
 ## Live Website
 
@@ -68,3 +68,11 @@ The website dynamically changes its title based on the route, providing context 
 ### Code Quality
 
 The project maintains a high code quality standard, including meaningful component names, an organized folder structure, and helpful comments for developers.
+
+## Contributing
+
+If you'd like to contribute to this project, please follow our [contribution guidelines](#contribution-guidelines).
+
+## License
+
+This project is licensed under the [MIT License](#license).
