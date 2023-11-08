@@ -25,6 +25,7 @@ function JobProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [isDark, setIsDark] = useState(false);
   const auth = getAuth(app);
+  // const baseURL = "https://job-zen-server-side.vercel.app";
   const baseURL = "http://localhost:5000";
 
   useEffect(() => {

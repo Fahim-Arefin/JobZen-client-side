@@ -38,6 +38,9 @@ function JobDetails() {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader({ params }) {
+  // const res = await fetch(
+  //   `https://job-zen-server-side.vercel.app/jobs/${params.id}`
+  // );
   const res = await fetch(`http://localhost:5000/jobs/${params.id}`);
   const data = await res.json();
   return data;

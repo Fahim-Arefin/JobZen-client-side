@@ -9,6 +9,8 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
+import FoundNoProduct from "../components/FoundNoProduct";
+
 function MyJobs() {
   const { user, baseURL } = useContext(JobContext);
   const [myData, setMyData] = useState([]);
@@ -152,6 +154,7 @@ function MyJobs() {
               </tbody>
             </table>
           </div>
+          {myData.length === 0 && <FoundNoProduct />}
         </div>
       )}
     </div>

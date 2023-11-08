@@ -4,6 +4,7 @@ import JobContext from "../context/JobContext";
 import axios from "axios";
 import Spinner from "../components/Spinner";
 import AppliedJobCard from "../components/AppliedJobCard";
+import FoundNoProduct from "../components/FoundNoProduct";
 
 function AppliedJobs() {
   const { user, baseURL } = useContext(JobContext);
@@ -78,6 +79,9 @@ function AppliedJobs() {
             {filteredData?.map((jobs) => (
               <AppliedJobCard key={jobs._id} data={jobs} />
             ))}
+          </div>
+          <div className="mx-auto my-24">
+            <div> {filteredData?.length === 0 && <FoundNoProduct />}</div>
           </div>
         </div>
       </div>

@@ -97,34 +97,34 @@ function Navbar({ className }) {
               All Jobs
             </NavLink>
           </li>
-          {/* {user && (
-            <> */}
-          <li>
-            <NavLink
-              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-              to="/applied-jobs"
-            >
-              Applied Jobs
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-              to="/add-jobs"
-            >
-              Add A Job
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-              to="/my-jobs"
-            >
-              My Jobs
-            </NavLink>
-          </li>
-          {/* </>
-          )} */}
+          {user && (
+            <>
+              <li>
+                <NavLink
+                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+                  to="/applied-jobs"
+                >
+                  Applied Jobs
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+                  to="/add-jobs"
+                >
+                  Add A Job
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
+                  to="/my-jobs"
+                >
+                  My Jobs
+                </NavLink>
+              </li>
+            </>
+          )}
           <li>
             <NavLink
               className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
