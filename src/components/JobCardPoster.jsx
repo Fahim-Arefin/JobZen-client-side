@@ -43,10 +43,7 @@ function JobCardPoster({ data }) {
       if (res.data.message) {
         return errorToast(res.data.message, 2000);
       }
-      successToast(
-        "Job Applied Successfull !! Also mail send to your email",
-        2000
-      );
+      successToast("EmailJs is set !! Applied Successfull", 2000);
       setTimeout(() => {
         navigate("/applied-jobs");
       }, 3000);

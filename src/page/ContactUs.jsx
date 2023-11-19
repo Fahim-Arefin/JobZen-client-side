@@ -30,10 +30,7 @@ const ContactUs = () => {
           console.log(result.text);
           e.target.reset();
           setIsLoading(false);
-          successToast(
-            "We Recieved your Message !! We will contact soon..",
-            2000
-          );
+          successToast("Recieved msg through EmailJs", 2000);
         },
         (error) => {
           console.log(error.text);
@@ -47,6 +44,7 @@ const ContactUs = () => {
     <>
       {isLoading && <Spinner />}
       <div className="w-full max-w-md mx-auto">
+        <h1 className="my-6 text-2xl font-semibold">Contact Us</h1>
         <form
           ref={form}
           onSubmit={sendEmail}
