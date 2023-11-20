@@ -26,6 +26,7 @@ function AddJobs() {
     jobPostingDate: new Date(),
     applicationDeadline: new Date(),
     jobApplicants: 0,
+    image: null,
   });
   useEffect(() => {
     setJobData({
@@ -36,11 +37,22 @@ function AddJobs() {
   }, [user?.displayName]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setJobData({
-      ...jobData,
-      [name]: value,
-    });
+    const { name, files, value } = e.target;
+    // If the input is a file input, update the bannerFile state
+
+    if (name === "image") {
+      const selectedImage = files[0];
+      setJobData({
+        ...jobData,
+        [name]: selectedImage,
+      });
+    } else {
+      setJobData({
+        ...jobData,
+        [name]: value,
+      });
+    }
+    // console.log(files);
   };
 
   const handleDateChange = (date, name) => {
@@ -55,26 +67,71 @@ function AddJobs() {
     try {
       setIslaoding(true);
       // setIsError(false);
-      const res = await axios.post(`${baseURL}/jobs`, {
-        ...jobData,
-        authorId: user.uid,
-      });
-      console.log(res.data);
-      setJobData({
-        bannerUrl: "",
-        jobTitle: "",
-        userName: "",
-        jobCategory: "on-site",
-        salaryRange: "",
-        jobDescription: "",
-        jobPostingDate: new Date(),
-        applicationDeadline: new Date(),
-        jobApplicants: 0,
-      });
-      successToast("Job Posted SuccessFully !!", 2000);
-      setTimeout(() => {
-        navigate("/my-jobs");
-      }, 3000);
+
+      // console.log(jobData);
+
+      // Check if the image size is under 300 KB
+      if (jobData.image && jobData.image.size > 300 * 1024) {
+        // Display an error message or take appropriate actions
+        errorToast("Image should be under 300 KB ", 2000);
+        console.error("Image size exceeds 300 KB limit");
+        return;
+      }
+
+      // Create a FormData object
+      const formData = new FormData();
+
+      // Append file data to FormData
+      formData.append("image", jobData.image);
+
+      // Upload image to imgbb and get the url
+      const res = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMAGE_HOSTING_KEY
+        }`,
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (res.data.success) {
+        const data = {
+          bannerUrl: res.data.data.display_url,
+          jobTitle: jobData.jobTitle,
+          userName: user?.displayName,
+          jobCategory: jobData.jobCategory,
+          salaryRange: jobData.salaryRange,
+          jobDescription: jobData.jobDescription,
+          jobPostingDate: jobData.jobPostingDate,
+          applicationDeadline: jobData.applicationDeadline,
+          jobApplicants: 0,
+        };
+
+        const response = await axios.post(`${baseURL}/jobs`, {
+          ...data,
+          authorId: user.uid,
+        });
+        console.log(response.data);
+        setJobData({
+          bannerUrl: "",
+          jobTitle: "",
+          userName: "",
+          jobCategory: "on-site",
+          salaryRange: "",
+          jobDescription: "",
+          jobPostingDate: new Date(),
+          applicationDeadline: new Date(),
+          jobApplicants: 0,
+          image: null,
+        });
+        successToast("Job Posted SuccessFully !!", 2000);
+        setTimeout(() => {
+          navigate("/my-jobs");
+        }, 3000);
+      }
     } catch (error) {
       console.log(error);
       setIslaoding(false);
@@ -93,6 +150,7 @@ function AddJobs() {
         jobPostingDate: new Date(),
         applicationDeadline: new Date(),
         jobApplicants: 0,
+        image: null,
       });
     }
   };
@@ -107,8 +165,22 @@ function AddJobs() {
         <h2 className="text-3xl font-semibold mb-4 text-zinc-700">Add A Job</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            {/* url */}
+            {/* file */}
             <div className="space-y-2">
+              <label htmlFor="bannerUrl" className="text-zinc-700">
+                Banner Image (Max size: 300 KB)
+              </label>
+              <input
+                required
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={handleInputChange}
+                className="input w-full rounded-md px-3 py-2 mt-1"
+              />
+            </div>
+            {/* url */}
+            {/* <div className="space-y-2">
               <label htmlFor="bannerUrl" className="text-zinc-700">
                 Picture URL
               </label>
@@ -121,7 +193,7 @@ function AddJobs() {
                 onChange={handleInputChange}
                 className="input w-full rounded-md px-3 py-2 mt-1"
               />
-            </div>
+            </div> */}
             {/* title */}
             <div className="space-y-2">
               <label htmlFor="jobTitle" className="text-zinc-700">

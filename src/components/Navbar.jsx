@@ -66,9 +66,6 @@ function Navbar({ className }) {
               </>
             )}
             <li>
-              <NavLink to="/blogs">Blogs</NavLink>
-            </li>
-            <li>
               <NavLink to="/contact">Contact Us</NavLink>
             </li>
           </ul>
@@ -128,14 +125,6 @@ function Navbar({ className }) {
               </li>
             </>
           )}
-          <li>
-            <NavLink
-              className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "
-              to="/blogs"
-            >
-              Blogs
-            </NavLink>
-          </li>
           <li>
             <NavLink
               className="cursor-pointer hover:bg-[#aea1ea] hover:text-white transition-all duration-150 px-3 py-2 rounded-md "

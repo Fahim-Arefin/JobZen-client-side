@@ -32,10 +32,27 @@ function MyJobs() {
       title: "Are you sure?",
       text: "Are you sure that you want to delete this product?",
       icon: "warning",
+      buttons: {
+        confirm: {
+          text: "Yes, delete it!",
+          value: true,
+          visible: true,
+          className: "swal-button swal-button--confirm",
+        },
+        cancel: {
+          text: "Cancel",
+          value: null,
+          visible: true,
+          className:
+            "bg-rose-500 text-white hover:!text-white hover:!bg-red-600",
+          closeModal: true,
+        },
+      },
     });
 
     if (willDelete) {
       try {
+        setIsLoading(true);
         await axios.delete(`${baseURL}/jobs/${id}`);
         swal(
           "Deleted!",
@@ -46,6 +63,8 @@ function MyJobs() {
         setMyData(filteredData);
       } catch (err) {
         swal("Oops!", "Seems like we couldn't fetch the info", "error");
+      } finally {
+        setIsLoading(false);
       }
     }
   };

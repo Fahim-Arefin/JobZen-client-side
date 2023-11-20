@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 function JobCardPoster({ data }) {
   const { user, baseURL, successToast, errorToast } = useContext(JobContext);
-  const [resume, setResume] = useState("");
+  const [resume, setResume] = useState(null);
+  const [sizeError, setSizeError] = useState(false);
   const [isLoading, setIsloading] = useState(false);
   const navigate = useNavigate();
 
@@ -23,27 +24,63 @@ function JobCardPoster({ data }) {
     document.getElementById("my_modal_3").showModal();
   };
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (
+      selectedFile &&
+      selectedFile.type === "application/pdf" &&
+      selectedFile.size <= 300 * 1024
+    ) {
+      // File is a PDF and under 300 KB, you can handle it
+      setResume(selectedFile);
+      setSizeError(false);
+    } else {
+      // File is not a PDF or exceeds 300 KB, you can handle this case (e.g., show an error)
+      setResume(null);
+      setSizeError(true);
+      console.error("Invalid file format or size");
+    }
+  };
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-    modalRef.current.close();
-    const applicationData = {
-      applicantName: user.displayName,
-      applicantEmail: user.email,
-      resumeLink: resume,
-      jobId: data._id,
-      createdAt: new Date(),
-    };
+    // const applicationData = {
+    //   applicantName: user.displayName,
+    //   applicantEmail: user.email,
+    //   resumeLink: resume,
+    //   jobId: data._id,
+    //   createdAt: new Date(),
+    // };
     // console.log(applicationData);
+
+    if (sizeError) {
+      return;
+    }
+    modalRef.current.close();
+    const formData = new FormData();
+    formData.append("applicantName", user.displayName);
+    formData.append("applicantEmail", user.email);
+    formData.append("jobId", data._id);
+    formData.append("createdAt", new Date());
+    formData.append("resume", resume);
+
     try {
       setIsloading(true);
-      const res = await axios.post(`${baseURL}/applications?id=${user.uid}`, {
-        ...applicationData,
-      });
-      // console.log(res.data);
+      const res = await axios.post(
+        `${baseURL}/applications?id=${user.uid}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(res.data);
       if (res.data.message) {
         return errorToast(res.data.message, 2000);
       }
-      successToast("EmailJs is set !! Applied Successfull", 2000);
+      successToast("Job Applied Successfull", 2000);
       setTimeout(() => {
         navigate("/applied-jobs");
       }, 3000);
@@ -201,14 +238,20 @@ function JobCardPoster({ data }) {
                   </label>
                   <input
                     className="input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="text"
+                    type="file"
                     id="resume"
                     name="resume"
-                    placeholder="resume link"
+                    accept=".pdf"
+                    onChange={handleFileChange}
                     required
-                    value={resume}
-                    onChange={(e) => setResume(e.target.value)}
                   />
+                  <div
+                    className={`font-semibold text-sm mt-1 ${
+                      sizeError ? "text-rose-500 " : "text-green-500 "
+                    }`}
+                  >
+                    * PDF size should not exceed 300 KB
+                  </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <Button primary className="px-4 py-2">
