@@ -1,8 +1,12 @@
 import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import JobCardPoster from "../components/JobCardPoster";
+import { useContext } from "react";
+import JobContext from "../context/JobContext";
+import ApplicantInfo from "../components/ApplicantInfo";
 
 function JobDetails() {
+  const { user } = useContext(JobContext);
   const data = useLoaderData();
   console.log(data);
 
@@ -32,6 +36,8 @@ function JobDetails() {
           </p>
         </div>
       </div>
+      {/* job applicant list, only see who owns that */}
+      {data.authorId === user.uid && <ApplicantInfo jobId={data._id} />}
     </div>
   );
 }
