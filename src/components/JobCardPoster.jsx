@@ -62,6 +62,7 @@ function JobCardPoster({ data }) {
     formData.append("applicantName", user.displayName);
     formData.append("applicantEmail", user.email);
     formData.append("jobId", data._id);
+    // formData.append("jobId", data);
     formData.append("createdAt", new Date());
     formData.append("resume", resume);
 
