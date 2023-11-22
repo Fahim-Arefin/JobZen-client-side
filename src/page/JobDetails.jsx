@@ -37,7 +37,9 @@ function JobDetails() {
         </div>
       </div>
       {/* job applicant list, only see who owns that */}
-      {data.authorId === user.uid && <ApplicantInfo jobId={data._id} />}
+      {data.authorId === user.uid && (
+        <ApplicantInfo jobId={data._id} jobName={data.jobTitle} />
+      )}
     </div>
   );
 }

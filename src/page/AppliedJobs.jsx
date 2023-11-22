@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import JobContext from "../context/JobContext";
@@ -9,29 +10,14 @@ import AppliedJobList from "../components/AppliedJobList";
 
 function AppliedJobs() {
   const { user, baseURL } = useContext(JobContext);
+
   const [appliedData, setAppliedData] = useState([]);
-  // const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  // const [selectedCategory, setSelectedCategory] = useState("all-jobs");
-
-  // const handleChangeOnCategory = (event) => {
-  //   setSelectedCategory(event.target.value);
-  // };
-
-  // useEffect(() => {
-  //   if (selectedCategory !== "all-jobs") {
-  //     const filtereData = appliedData.filter((job) => {
-  //       if (job.jobCategory.includes(selectedCategory)) {
-  //         return true;
-  //       }
-  //     });
-  //     setFilteredData(filtereData);
-  //   } else {
-  //     setFilteredData([...appliedData]);
-  //   }
-  // }, [selectedCategory, appliedData]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +29,7 @@ function AppliedJobs() {
           { withCredentials: true }
         );
         setAppliedData(res.data);
-        // setFilteredData(res.data);
+        setFilteredData(res.data);
       } catch (error) {
         setIsError(true);
         console.log(error);
@@ -54,6 +40,19 @@ function AppliedJobs() {
     fetchData();
   }, [baseURL, user.email]);
 
+  useEffect(() => {
+    if (selectedCategory !== "all") {
+      const filtereData = appliedData.filter((job) => {
+        if (job.status === selectedCategory) {
+          return true;
+        }
+      });
+      setFilteredData([...filtereData]);
+    } else {
+      setFilteredData([...appliedData]);
+    }
+  }, [selectedCategory, appliedData]);
+
   return (
     <>
       {isLoading && <Spinner />}
@@ -63,27 +62,26 @@ function AppliedJobs() {
           <title>JobZen | Applied Jobs</title>
         </Helmet>
         <div className="mt-12">
-          {/* <div className="w-full text-center py-12">
+          <div className="w-full text-center py-12">
             <select
               className="select w-full max-w-xs select-bordered"
               value={selectedCategory}
-              onChange={handleChangeOnCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="all-jobs">See All</option>
-              <option value="on-site">On Site</option>
-              <option value="remote">Remote</option>
-              <option value="hybrid">Hybrid</option>
-              <option value="part-time">Part-Time</option>
+              <option value="all">See All</option>
+              <option value="pending">Pending</option>
+              <option value="accept">Accepted</option>
+              <option value="reject">Rejected</option>
             </select>
-          </div> */}
+          </div>
           <div className="p-0 md:px-6 2xl:px-44 grid grid-cols-1 xl:grid-cols-3 gap-10 mb-24">
-            {appliedData?.map((jobs) => (
+            {filteredData?.map((jobs) => (
               // <AppliedJobCard key={jobs._id} data={jobs} />
-              <AppliedJobList key={jobs._id} data={jobs} />
+              <AppliedJobList key={uuidv4()} data={jobs} />
             ))}
           </div>
           <div className="mx-auto my-24">
-            <div> {appliedData?.length === 0 && <FoundNoProduct />}</div>
+            <div> {filteredData?.length === 0 && <FoundNoProduct />}</div>
           </div>
         </div>
       </div>

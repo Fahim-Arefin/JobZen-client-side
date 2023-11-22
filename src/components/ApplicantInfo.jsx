@@ -10,7 +10,7 @@ import { BsDownload } from "react-icons/bs";
 import Spinner from "./Spinner";
 import { ToastContainer } from "react-toastify";
 
-function ApplicantInfo({ jobId }) {
+function ApplicantInfo({ jobId, jobName }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -77,10 +77,13 @@ function ApplicantInfo({ jobId }) {
     modalRef.current.close();
     try {
       setIsSubmit(true);
-      await axios.patch(`${baseURL}/applications/${selectedApplicant._id}`, {
-        status: e.target.status.value,
-        feedback: e.target.feedback.value,
-      });
+      await axios.patch(
+        `${baseURL}/applications/${selectedApplicant._id}?email=${selectedApplicant.applicantEmail}&name=${selectedApplicant.applicantName}&jobName=${jobName}`,
+        {
+          status: e.target.status.value,
+          feedback: e.target.feedback.value,
+        }
+      );
       successToast("Feedback posted successful", 2000);
       setRefetch(refetch + 1);
     } catch (error) {
