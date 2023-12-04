@@ -4,10 +4,10 @@ The Job Seeker Website is a visually captivating full-stack solution that stream
 
 ## Table of Contents
 
-1. [Visual Appeal](#visual-appeal) 🔍
-2. [User Authentication](#user-authentication) 🔐
-3. [Job Listings](#job-listings) 📋
-4. [Educational Content](#educational-content) 📚
+1. [User Authentication](#user-authentication) 🔐
+2. [Job Listings](#job-listings) 📋
+3. [File upload download system](#File-upload-download-system) 📚
+4. [Email Service Integration](#Email-Service-Integration) 💢
 5. [Job Management](#job-management) 🏢
 6. [Search System](#search-system) 🔍
 7. [Custom 404 Page](#custom-404-page) 🚫
@@ -15,19 +15,15 @@ The Job Seeker Website is a visually captivating full-stack solution that stream
 9. [JWT Implementation](#jwt-implementation) 🔒
 10. [Dynamic Page Title](#dynamic-page-title) 🔄
 11. [Code Quality](#code-quality) 🛠️
-12. [Contributing](#contributing) 🤝
-13. [License](#license) 📜
-14. [Live Website](#live-website) 🌐
+12. [Live Website](#live-website) 🌐
+13. [Contributing](#contributing) 🤝
+14. [License](#license) 📜
 
 ## Live Website
 
-You can access the live website by following this [link](https://jobzen-45cf0.web.app/).
+You can access the live website by following this link [JobZen](https://jobzen-45cf0.web.app/).
 
 ## Key Features
-
-### Visual Appeal
-
-The website focuses on creating a visually pleasing design with unique elements, ensuring an engaging user experience.
 
 ### User Authentication
 
@@ -37,9 +33,13 @@ Users can register and log in, with error messages displayed when necessary to g
 
 The homepage features a banner section with a search input field and categorized job listings, making it easy for users to find the jobs that match their preferences.
 
-### Educational Content
+### File upload download system
 
-The blog section provides valuable content on topics such as access tokens, Express.js, and Nest.js to enhance user knowledge.
+Aplicant can apply a job with a resume submission through file upload system. And job uploader can download applicant's pdf files through browser file downlaod system. These pdf files are stored in cloudinary cloud system.
+
+### Email Service Integration
+
+Whenever applciant apply for a job an automated email is send to that applicant that his/her job has been post successfull. Also when his/her job is accepted or rejected also an email send to applicant to inform about there application status. SendInBlue API is used to this email service.
 
 ### Job Management
 
