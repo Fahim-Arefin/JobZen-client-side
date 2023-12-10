@@ -25,7 +25,7 @@ You can access the live website by following this link [JobZen](https://jobzen-4
 
 ## Key Features
 
-### User Authentication
+### User Authentication with Firebase
 
 Users can register and log in, with error messages displayed when necessary to guide them through the process.
 
